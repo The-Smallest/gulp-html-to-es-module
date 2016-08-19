@@ -1,6 +1,6 @@
 {
   "name": "gulp-html-to-es-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert html file to es6 module",
   "main": "index.js",
   "scripts": {

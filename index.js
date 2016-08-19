@@ -14,13 +14,12 @@ module.exports = function jsTemplate(options) {
   return through.obj(function (file, _, done) {
     if (!file.isBuffer())
       return
-
     options = options || {}
-    var newPath = file.relative + (options.noExtension ? '' : '.js')
     var newContents = wrap(escape(file.contents.toString()))
-    done(null, new File({
-      path: newPath,
-      contents: new Buffer(newContents)
-    }))
+    file.contents = new Buffer(newContents)
+    if (!options.noExtension)
+      file.path += '.js'
+
+    done(null, file)
   })
 }
